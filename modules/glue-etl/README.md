@@ -5,6 +5,9 @@ WORKINGGGG!!
 
 NOT COVERED: Script -- which can be PYTHON or SCALA both uses Spark, you have to come up with script depending on requirement and formats that you considering converting from and into
 
+**EXAMPLE SOURCING**
+
+```
 module "app1-glue-etl" {
   source                      =  "git@github.com:rajeshbathula/terraform-generic-modules.git//modules/glue_etl?ref=<TAG-VERSION>"
   project                     =  "project-name"
@@ -13,7 +16,7 @@ module "app1-glue-etl" {
   common_tags                 =  "${var.tags}"
   bucket_name_src             =  "src_bucket_s3"
   bucket_name_dst             =  "dest_bucket_s3"
-  script_bucket_name          =  "dpp-${var.aws_role}-framework-infrastructure"
+  script_bucket_name          =  "script_bucket_name"
   local_script_path           =  "../../../apps/glue-lettuce-know/jglue/"
   script_object_name          =  "main.py"
   script_helper_object_name   =  "data_quality_checks.json"
@@ -21,3 +24,4 @@ module "app1-glue-etl" {
   glue_job_type               =  "SCHEDULED"
   etl_schedule                =  "cron(00 09 * * ? *)"
 }
+```
